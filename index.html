@@ -63,65 +63,14 @@ radial-gradient(circle at bottom,#7c3aed44,transparent 35%),
 z-index:-3;
 }
 
-.stars{
+.noise{
 position:absolute;
 inset:0;
 background-image:
-radial-gradient(rgba(255,255,255,.4) 1px,transparent 1px);
-background-size:45px 45px;
-opacity:.12;
+radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
+background-size:40px 40px;
+opacity:.1;
 z-index:-2;
-animation:moveStars 80s linear infinite;
-}
-
-@keyframes moveStars{
-from{
-transform:translateY(0);
-}
-to{
-transform:translateY(-1000px);
-}
-}
-
-/* GLOW ORBS */
-
-.orb{
-position:absolute;
-border-radius:50%;
-filter:blur(80px);
-opacity:.4;
-animation:pulse 6s infinite;
-}
-
-.orb1{
-width:300px;
-height:300px;
-background:#ff0080;
-top:-100px;
-left:-100px;
-}
-
-.orb2{
-width:350px;
-height:350px;
-background:#7c3aed;
-bottom:-120px;
-right:-120px;
-}
-
-@keyframes pulse{
-0%{
-transform:scale(1);
-opacity:.4;
-}
-50%{
-transform:scale(1.2);
-opacity:.7;
-}
-100%{
-transform:scale(1);
-opacity:.4;
-}
 }
 
 /* CARD */
@@ -201,41 +150,23 @@ color:#ffd6ef;
 
 /* VIDEO */
 
-.video-wrap{
-position:relative;
-display:flex;
-justify-content:center;
-align-items:center;
-width:100%;
-height:100vh;
-}
-
-.video-glow{
-position:absolute;
-width:500px;
-height:500px;
-border-radius:50%;
-background:radial-gradient(circle,#ff008066,transparent 70%);
-filter:blur(90px);
-animation:pulse 5s infinite;
-}
-
 video{
-position:relative;
 width:960px;
 height:720px;
+
 max-width:92%;
 max-height:82vh;
+
 object-fit:contain;
-border-radius:30px;
 background:black;
+
+border-radius:28px;
 
 border:2px solid rgba(255,255,255,.08);
 
 box-shadow:
-0 0 30px rgba(255,0,128,.35),
-0 0 80px rgba(124,58,237,.25),
-0 0 120px rgba(255,0,128,.15);
+0 0 25px rgba(255,0,128,.25),
+0 0 60px rgba(124,58,237,.18);
 
 animation:floatVideo 4s ease-in-out infinite;
 }
@@ -247,13 +178,48 @@ transform:translateY(0px);
 }
 
 50%{
-transform:translateY(-12px);
+transform:translateY(-10px);
 }
 
 100%{
 transform:translateY(0px);
 }
 
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:.4;
+}
+
+50%{
+transform:scale(1.15);
+opacity:.7;
+}
+
+100%{
+transform:scale(1);
+opacity:.4;
+}
+
+}
+
+/* FINAL PAGE */
+
+.final-title{
+font-family:'Cinzel',serif;
+font-size:3rem;
+line-height:1.5;
+text-shadow:
+0 0 20px rgba(255,105,180,.6);
+}
+
+.final-sub{
+margin-top:20px;
+opacity:.8;
+line-height:1.8;
 }
 
 /* FLOATING LIGHTS */
@@ -278,22 +244,6 @@ transform:translateY(-120vh);
 }
 }
 
-/* FINAL PAGE */
-
-.final-title{
-font-family:'Cinzel',serif;
-font-size:3rem;
-line-height:1.5;
-text-shadow:
-0 0 20px rgba(255,105,180,.6);
-}
-
-.final-sub{
-margin-top:20px;
-opacity:.8;
-line-height:1.8;
-}
-
 /* HINT */
 
 .hint{
@@ -314,7 +264,7 @@ z-index:999;
 @media(max-width:768px){
 
 .title{
-font-size:2.1rem;
+font-size:2rem;
 }
 
 .final-title{
@@ -322,7 +272,7 @@ font-size:2rem;
 }
 
 #countdown{
-font-size:1.6rem;
+font-size:1.5rem;
 }
 
 video{
@@ -347,10 +297,7 @@ max-height:72vh;
 <section class="page active" id="timerPage">
 
 <div class="bg"></div>
-<div class="stars"></div>
-
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
+<div class="noise"></div>
 
 <div class="card">
 
@@ -385,10 +332,7 @@ Enter The Secret ✨
 <section class="page" id="passwordPage">
 
 <div class="bg"></div>
-<div class="stars"></div>
-
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
+<div class="noise"></div>
 
 <div class="card">
 
@@ -420,11 +364,17 @@ Unlock 🎬
 <section class="page" id="videoPage">
 
 <div class="bg"></div>
-<div class="stars"></div>
+<div class="noise"></div>
 
-<div class="video-wrap">
-
-<div class="video-glow"></div>
+<div style="
+position:absolute;
+width:450px;
+height:450px;
+border-radius:50%;
+background:radial-gradient(circle,#ff008055,transparent 70%);
+filter:blur(90px);
+animation:pulse 5s infinite;
+"></div>
 
 <video
 id="mainVideo"
@@ -434,8 +384,6 @@ controls>
 
 </video>
 
-</div>
-
 </section>
 
 <!-- FINAL PAGE -->
@@ -443,10 +391,7 @@ controls>
 <section class="page" id="finalPage">
 
 <div class="bg"></div>
-<div class="stars"></div>
-
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
+<div class="noise"></div>
 
 <div class="card">
 
