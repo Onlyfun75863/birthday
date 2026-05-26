@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Aashi ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,7 +17,7 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#040404;
+background:#050505;
 overflow:hidden;
 color:white;
 }
@@ -43,7 +43,7 @@ animation:fade 1s ease;
 @keyframes fade{
 from{
 opacity:0;
-transform:scale(1.08);
+transform:scale(1.05);
 }
 to{
 opacity:1;
@@ -57,60 +57,84 @@ transform:scale(1);
 position:absolute;
 inset:0;
 background:
-radial-gradient(circle at top,#ff008033,transparent 35%),
-radial-gradient(circle at bottom,#7c3aed33,transparent 35%),
-#040404;
+radial-gradient(circle at top,#ff008044,transparent 35%),
+radial-gradient(circle at bottom,#7c3aed44,transparent 35%),
+#050505;
 z-index:-3;
 }
 
-.noise{
+.stars{
 position:absolute;
 inset:0;
 background-image:
-radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
-background-size:40px 40px;
-opacity:.1;
+radial-gradient(rgba(255,255,255,.4) 1px,transparent 1px);
+background-size:45px 45px;
+opacity:.12;
 z-index:-2;
+animation:moveStars 80s linear infinite;
 }
 
-.rings{
+@keyframes moveStars{
+from{
+transform:translateY(0);
+}
+to{
+transform:translateY(-1000px);
+}
+}
+
+/* GLOW ORBS */
+
+.orb{
 position:absolute;
-width:700px;
-height:700px;
 border-radius:50%;
-border:1px solid rgba(255,255,255,.05);
-animation:rotate 35s linear infinite;
+filter:blur(80px);
+opacity:.4;
+animation:pulse 6s infinite;
 }
 
-.rings:before,
-.rings:after{
-content:'';
-position:absolute;
-inset:60px;
-border-radius:50%;
-border:1px solid rgba(255,255,255,.04);
+.orb1{
+width:300px;
+height:300px;
+background:#ff0080;
+top:-100px;
+left:-100px;
 }
 
-.rings:after{
-inset:120px;
+.orb2{
+width:350px;
+height:350px;
+background:#7c3aed;
+bottom:-120px;
+right:-120px;
 }
 
-@keyframes rotate{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
+@keyframes pulse{
+0%{
+transform:scale(1);
+opacity:.4;
+}
+50%{
+transform:scale(1.2);
+opacity:.7;
+}
+100%{
+transform:scale(1);
+opacity:.4;
+}
 }
 
 /* CARD */
 
-.glass{
+.card{
 width:min(92%,520px);
 padding:40px;
 border-radius:35px;
-background:rgba(255,255,255,.05);
+background:rgba(255,255,255,.06);
 backdrop-filter:blur(18px);
 border:1px solid rgba(255,255,255,.08);
 box-shadow:
-0 0 40px rgba(255,0,128,.15),
+0 0 40px rgba(255,0,128,.12),
 0 0 100px rgba(124,58,237,.1);
 text-align:center;
 }
@@ -123,37 +147,36 @@ font-size:3rem;
 line-height:1.3;
 letter-spacing:2px;
 text-shadow:
-0 0 15px rgba(255,105,180,.6);
+0 0 20px rgba(255,105,180,.6);
 }
 
 .sub{
 margin-top:20px;
 line-height:1.9;
 opacity:.85;
-font-size:1rem;
 }
 
 /* BUTTON */
 
 .btn{
 margin-top:25px;
-padding:15px 32px;
+padding:15px 35px;
 border:none;
 border-radius:50px;
 background:linear-gradient(45deg,#ff0080,#7c3aed);
 color:white;
 font-size:1rem;
 cursor:pointer;
+transition:.4s;
 box-shadow:
 0 0 20px rgba(255,0,128,.3);
-transition:.4s;
 }
 
 .btn:hover{
 transform:scale(1.05);
 }
 
-/* PASSWORD */
+/* INPUT */
 
 input{
 width:100%;
@@ -161,7 +184,7 @@ padding:16px;
 margin-top:20px;
 border:none;
 outline:none;
-border-radius:18px;
+border-radius:20px;
 background:rgba(255,255,255,.08);
 color:white;
 font-size:1rem;
@@ -178,57 +201,57 @@ color:#ffd6ef;
 
 /* VIDEO */
 
+.video-wrap{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+height:100vh;
+}
+
+.video-glow{
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+background:radial-gradient(circle,#ff008066,transparent 70%);
+filter:blur(90px);
+animation:pulse 5s infinite;
+}
+
 video{
+position:relative;
 width:960px;
 height:720px;
 max-width:92%;
-max-height:90vh;
+max-height:82vh;
 object-fit:contain;
-border-radius:28px;
+border-radius:30px;
 background:black;
 
+border:2px solid rgba(255,255,255,.08);
+
 box-shadow:
-0 0 25px rgba(255,0,128,.35),
-0 0 60px rgba(124,58,237,.25),
-0 0 120px rgba(255,0,128,.18);
+0 0 30px rgba(255,0,128,.35),
+0 0 80px rgba(124,58,237,.25),
+0 0 120px rgba(255,0,128,.15);
 
 animation:floatVideo 4s ease-in-out infinite;
-
-border:2px solid rgba(255,255,255,.08);
-backdrop-filter:blur(10px);
 }
 
 @keyframes floatVideo{
 
 0%{
-transform:translateY(0px) scale(1);
+transform:translateY(0px);
 }
 
 50%{
-transform:translateY(-10px) scale(1.01);
+transform:translateY(-12px);
 }
 
 100%{
-transform:translateY(0px) scale(1);
-}
-
-}
-
-@keyframes pulse{
-
-0%{
-transform:scale(1);
-opacity:.5;
-}
-
-50%{
-transform:scale(1.2);
-opacity:1;
-}
-
-100%{
-transform:scale(1);
-opacity:.5;
+transform:translateY(0px);
 }
 
 }
@@ -242,8 +265,8 @@ height:8px;
 border-radius:50%;
 background:#ff4fa3;
 box-shadow:0 0 15px #ff4fa3;
+opacity:.5;
 animation:float 10s linear infinite;
-opacity:.6;
 }
 
 @keyframes float{
@@ -255,22 +278,23 @@ transform:translateY(-120vh);
 }
 }
 
-/* FINAL */
+/* FINAL PAGE */
 
-.final-text{
-font-size:3rem;
+.final-title{
 font-family:'Cinzel',serif;
+font-size:3rem;
 line-height:1.5;
-text-align:center;
 text-shadow:
 0 0 20px rgba(255,105,180,.6);
 }
 
-.small{
+.final-sub{
 margin-top:20px;
-opacity:.75;
+opacity:.8;
 line-height:1.8;
 }
+
+/* HINT */
 
 .hint{
 position:fixed;
@@ -281,7 +305,7 @@ border-radius:20px;
 background:rgba(255,255,255,.08);
 backdrop-filter:blur(10px);
 font-size:.85rem;
-box-shadow:0 0 15px rgba(255,0,128,.3);
+box-shadow:0 0 15px rgba(255,0,128,.25);
 z-index:999;
 }
 
@@ -290,20 +314,21 @@ z-index:999;
 @media(max-width:768px){
 
 .title{
-font-size:2.2rem;
-}
-
-.final-text{
 font-size:2.1rem;
 }
 
+.final-title{
+font-size:2rem;
+}
+
 #countdown{
-font-size:1.7rem;
+font-size:1.6rem;
 }
 
 video{
-width:100%;
+width:92%;
 height:auto;
+max-height:72vh;
 }
 
 }
@@ -322,17 +347,19 @@ height:auto;
 <section class="page active" id="timerPage">
 
 <div class="bg"></div>
-<div class="noise"></div>
-<div class="rings"></div>
+<div class="stars"></div>
 
-<div class="glass">
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="card">
 
 <h1 class="title">
 THE NIGHT<br>UNLOCKS ❤️
 </h1>
 
 <p class="sub">
-At exactly midnight...  
+At midnight...  
 something made only for Aashi will appear ✨
 </p>
 
@@ -358,9 +385,12 @@ Enter The Secret ✨
 <section class="page" id="passwordPage">
 
 <div class="bg"></div>
-<div class="noise"></div>
+<div class="stars"></div>
 
-<div class="glass">
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="card">
 
 <h1 class="title">
 ONE LAST STEP ❤️
@@ -390,16 +420,11 @@ Unlock 🎬
 <section class="page" id="videoPage">
 
 <div class="bg"></div>
-<div class="noise"></div>
+<div class="stars"></div>
 
-<div style="
-position:absolute;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#ff008055,transparent 70%);
-filter:blur(80px);
-animation:pulse 5s infinite;
-"></div>
+<div class="video-wrap">
+
+<div class="video-glow"></div>
 
 <video
 id="mainVideo"
@@ -409,6 +434,8 @@ controls>
 
 </video>
 
+</div>
+
 </section>
 
 <!-- FINAL PAGE -->
@@ -416,18 +443,20 @@ controls>
 <section class="page" id="finalPage">
 
 <div class="bg"></div>
-<div class="noise"></div>
-<div class="rings"></div>
+<div class="stars"></div>
 
-<div class="glass">
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
-<h1 class="final-text">
+<div class="card">
+
+<h1 class="final-title">
 More Things<br>Are Waiting ❤️
 </h1>
 
-<p class="small">
-This wasn't the surprise...  
-this was just the beginning ✨
+<p class="final-sub">
+This wasn’t the surprise...  
+this was only the beginning ✨
 </p>
 
 <button class="btn"
@@ -448,23 +477,26 @@ Replay Again ❤️
 function showPage(id){
 
 document.querySelectorAll('.page')
-.forEach(p=>p.classList.remove('active'));
+.forEach(page=>{
+page.classList.remove('active');
+});
 
 document.getElementById(id)
 .classList.add('active');
 
 }
 
-/* TIMER */
+/* COUNTDOWN */
 
-const target =
+const targetDate =
 new Date("May 28, 2026 00:00:00").getTime();
 
-const countdown = setInterval(()=>{
+const countdown =
+setInterval(()=>{
 
 const now = new Date().getTime();
 
-const distance = target - now;
+const distance = targetDate - now;
 
 const h = Math.floor(
 (distance%(1000*60*60*24))
@@ -494,7 +526,7 @@ document.getElementById("countdown")
 "✨ It's Time ✨";
 
 document.getElementById("enterBtn")
-.style.display="inline-block";
+.style.display = "inline-block";
 
 }
 
@@ -513,14 +545,14 @@ function checkPass(){
 const pass =
 document.getElementById('pass').value;
 
-if(pass==="1028"){
+if(pass === "1028"){
 
 showPage('videoPage');
 
-const vid =
+const video =
 document.getElementById('mainVideo');
 
-vid.play();
+video.play();
 
 }else{
 
@@ -534,10 +566,10 @@ document.getElementById('wrong')
 
 /* VIDEO END */
 
-const vid =
+const video =
 document.getElementById('mainVideo');
 
-vid.onended = ()=>{
+video.onended = ()=>{
 
 showPage('finalPage');
 
@@ -555,7 +587,7 @@ document.createElement('div');
 light.classList.add('light');
 
 light.style.left =
-Math.random()*100+'vw';
+Math.random()*100 + 'vw';
 
 light.style.animationDuration =
 (Math.random()*8+5)+'s';
@@ -564,9 +596,9 @@ document.body.appendChild(light);
 
 setTimeout(()=>{
 light.remove();
-},13000);
+},12000);
 
-},400);
+},500);
 
 }
 
@@ -575,308 +607,4 @@ createLights();
 </script>
 
 </body>
-</html>.final-text{
-font-size:3rem;
-font-family:'Cinzel',serif;
-line-height:1.5;
-text-align:center;
-text-shadow:
-0 0 20px rgba(255,105,180,.6);
-}
-
-.small{
-margin-top:20px;
-opacity:.75;
-line-height:1.8;
-}
-
-.hint{
-position:fixed;
-top:20px;
-right:20px;
-padding:10px 16px;
-border-radius:20px;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(10px);
-font-size:.85rem;
-box-shadow:0 0 15px rgba(255,0,128,.3);
-z-index:999;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.title{
-font-size:2.2rem;
-}
-
-.final-text{
-font-size:2.1rem;
-}
-
-#countdown{
-font-size:1.7rem;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="hint">
-🎬 Wear earphones for best experience
-</div>
-
-<!-- TIMER PAGE -->
-
-<section class="page active" id="timerPage">
-
-<div class="bg"></div>
-<div class="noise"></div>
-<div class="rings"></div>
-
-<div class="glass">
-
-<h1 class="title">
-THE NIGHT<br>UNLOCKS ❤️
-</h1>
-
-<p class="sub">
-At exactly midnight...  
-something made only for Aashi will appear ✨
-</p>
-
-<div id="countdown">
-00 : 00 : 00
-</div>
-
-<button class="btn"
-id="enterBtn"
-style="display:none;"
-onclick="openPassword()">
-
-Enter The Secret ✨
-
-</button>
-
-</div>
-
-</section>
-
-<!-- PASSWORD PAGE -->
-
-<section class="page" id="passwordPage">
-
-<div class="bg"></div>
-<div class="noise"></div>
-
-<div class="glass">
-
-<h1 class="title">
-ONE LAST STEP ❤️
-</h1>
-
-<p class="sub">
-Only one person knows this password...
-</p>
-
-<input
-type="password"
-id="pass"
-placeholder="Enter Password">
-
-<button class="btn" onclick="checkPass()">
-Unlock 🎬
-</button>
-
-<p id="wrong" style="margin-top:15px;"></p>
-
-</div>
-
-</section>
-
-<!-- VIDEO PAGE -->
-
-<section class="page" id="videoPage">
-
-<div class="bg"></div>
-<div class="noise"></div>
-
-<video
-id="mainVideo"
-controls>
-
-<source src="aashi.mp4" type="video/mp4">
-
-</video>
-
-</section>
-
-<!-- FINAL PAGE -->
-
-<section class="page" id="finalPage">
-
-<div class="bg"></div>
-<div class="noise"></div>
-<div class="rings"></div>
-
-<div class="glass">
-
-<h1 class="final-text">
-More Things<br>Are Waiting ❤️
-</h1>
-
-<p class="small">
-This wasn't the surprise...  
-this was just the beginning ✨
-</p>
-
-<button class="btn"
-onclick="location.reload()">
-
-Replay Again ❤️
-
-</button>
-
-</div>
-
-</section>
-
-<script>
-
-/* PAGE SWITCH */
-
-function showPage(id){
-
-document.querySelectorAll('.page')
-.forEach(p=>p.classList.remove('active'));
-
-document.getElementById(id)
-.classList.add('active');
-
-}
-
-/* TIMER */
-
-const target =
-new Date("May 28, 2026 00:00:00").getTime();
-
-const countdown = setInterval(()=>{
-
-const now = new Date().getTime();
-
-const distance = target - now;
-
-const h = Math.floor(
-(distance%(1000*60*60*24))
-/(1000*60*60)
-);
-
-const m = Math.floor(
-(distance%(1000*60*60))
-/(1000*60)
-);
-
-const s = Math.floor(
-(distance%(1000*60))
-/1000
-);
-
-document.getElementById("countdown")
-.innerHTML =
-`${h}h : ${m}m : ${s}s`;
-
-if(distance<=0){
-
-clearInterval(countdown);
-
-document.getElementById("countdown")
-.innerHTML =
-"✨ It's Time ✨";
-
-document.getElementById("enterBtn")
-.style.display="inline-block";
-
-}
-
-},1000);
-
-/* PASSWORD */
-
-function openPassword(){
-
-showPage('passwordPage');
-
-}
-
-function checkPass(){
-
-const pass =
-document.getElementById('pass').value;
-
-if(pass==="1028"){
-
-showPage('videoPage');
-
-const vid =
-document.getElementById('mainVideo');
-
-vid.play();
-
-}else{
-
-document.getElementById('wrong')
-.innerHTML =
-"Wrong Password 😭";
-
-}
-
-}
-
-/* VIDEO END */
-
-const vid =
-document.getElementById('mainVideo');
-
-vid.onended = ()=>{
-
-showPage('finalPage');
-
-};
-
-/* FLOATING LIGHTS */
-
-function createLights(){
-
-setInterval(()=>{
-
-const light =
-document.createElement('div');
-
-light.classList.add('light');
-
-light.style.left =
-Math.random()*100+'vw';
-
-light.style.animationDuration =
-(Math.random()*8+5)+'s';
-
-document.body.appendChild(light);
-
-setTimeout(()=>{
-light.remove();
-},13000);
-
-},400);
-
-}
-
-createLights();
-
-</script>
-
-</body>
-  </html>
+</html>
