@@ -179,10 +179,58 @@ color:#ffd6ef;
 /* VIDEO */
 
 video{
-width:100%;
-height:100vh;
-object-fit:cover;
+width:960px;
+height:720px;
+max-width:92%;
+max-height:90vh;
+object-fit:contain;
+border-radius:28px;
 background:black;
+
+box-shadow:
+0 0 25px rgba(255,0,128,.35),
+0 0 60px rgba(124,58,237,.25),
+0 0 120px rgba(255,0,128,.18);
+
+animation:floatVideo 4s ease-in-out infinite;
+
+border:2px solid rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+}
+
+@keyframes floatVideo{
+
+0%{
+transform:translateY(0px) scale(1);
+}
+
+50%{
+transform:translateY(-10px) scale(1.01);
+}
+
+100%{
+transform:translateY(0px) scale(1);
+}
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:.5;
+}
+
+50%{
+transform:scale(1.2);
+opacity:1;
+}
+
+100%{
+transform:scale(1);
+opacity:.5;
+}
+
 }
 
 /* FLOATING LIGHTS */
@@ -210,6 +258,324 @@ transform:translateY(-120vh);
 /* FINAL */
 
 .final-text{
+font-size:3rem;
+font-family:'Cinzel',serif;
+line-height:1.5;
+text-align:center;
+text-shadow:
+0 0 20px rgba(255,105,180,.6);
+}
+
+.small{
+margin-top:20px;
+opacity:.75;
+line-height:1.8;
+}
+
+.hint{
+position:fixed;
+top:20px;
+right:20px;
+padding:10px 16px;
+border-radius:20px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+font-size:.85rem;
+box-shadow:0 0 15px rgba(255,0,128,.3);
+z-index:999;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.title{
+font-size:2.2rem;
+}
+
+.final-text{
+font-size:2.1rem;
+}
+
+#countdown{
+font-size:1.7rem;
+}
+
+video{
+width:100%;
+height:auto;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hint">
+🎬 Wear earphones for best experience
+</div>
+
+<!-- TIMER PAGE -->
+
+<section class="page active" id="timerPage">
+
+<div class="bg"></div>
+<div class="noise"></div>
+<div class="rings"></div>
+
+<div class="glass">
+
+<h1 class="title">
+THE NIGHT<br>UNLOCKS ❤️
+</h1>
+
+<p class="sub">
+At exactly midnight...  
+something made only for Aashi will appear ✨
+</p>
+
+<div id="countdown">
+00 : 00 : 00
+</div>
+
+<button class="btn"
+id="enterBtn"
+style="display:none;"
+onclick="openPassword()">
+
+Enter The Secret ✨
+
+</button>
+
+</div>
+
+</section>
+
+<!-- PASSWORD PAGE -->
+
+<section class="page" id="passwordPage">
+
+<div class="bg"></div>
+<div class="noise"></div>
+
+<div class="glass">
+
+<h1 class="title">
+ONE LAST STEP ❤️
+</h1>
+
+<p class="sub">
+Only one person knows this password...
+</p>
+
+<input
+type="password"
+id="pass"
+placeholder="Enter Password">
+
+<button class="btn" onclick="checkPass()">
+Unlock 🎬
+</button>
+
+<p id="wrong" style="margin-top:15px;"></p>
+
+</div>
+
+</section>
+
+<!-- VIDEO PAGE -->
+
+<section class="page" id="videoPage">
+
+<div class="bg"></div>
+<div class="noise"></div>
+
+<div style="
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#ff008055,transparent 70%);
+filter:blur(80px);
+animation:pulse 5s infinite;
+"></div>
+
+<video
+id="mainVideo"
+controls>
+
+<source src="aashi.mp4" type="video/mp4">
+
+</video>
+
+</section>
+
+<!-- FINAL PAGE -->
+
+<section class="page" id="finalPage">
+
+<div class="bg"></div>
+<div class="noise"></div>
+<div class="rings"></div>
+
+<div class="glass">
+
+<h1 class="final-text">
+More Things<br>Are Waiting ❤️
+</h1>
+
+<p class="small">
+This wasn't the surprise...  
+this was just the beginning ✨
+</p>
+
+<button class="btn"
+onclick="location.reload()">
+
+Replay Again ❤️
+
+</button>
+
+</div>
+
+</section>
+
+<script>
+
+/* PAGE SWITCH */
+
+function showPage(id){
+
+document.querySelectorAll('.page')
+.forEach(p=>p.classList.remove('active'));
+
+document.getElementById(id)
+.classList.add('active');
+
+}
+
+/* TIMER */
+
+const target =
+new Date("May 28, 2026 00:00:00").getTime();
+
+const countdown = setInterval(()=>{
+
+const now = new Date().getTime();
+
+const distance = target - now;
+
+const h = Math.floor(
+(distance%(1000*60*60*24))
+/(1000*60*60)
+);
+
+const m = Math.floor(
+(distance%(1000*60*60))
+/(1000*60)
+);
+
+const s = Math.floor(
+(distance%(1000*60))
+/1000
+);
+
+document.getElementById("countdown")
+.innerHTML =
+`${h}h : ${m}m : ${s}s`;
+
+if(distance<=0){
+
+clearInterval(countdown);
+
+document.getElementById("countdown")
+.innerHTML =
+"✨ It's Time ✨";
+
+document.getElementById("enterBtn")
+.style.display="inline-block";
+
+}
+
+},1000);
+
+/* PASSWORD */
+
+function openPassword(){
+
+showPage('passwordPage');
+
+}
+
+function checkPass(){
+
+const pass =
+document.getElementById('pass').value;
+
+if(pass==="1028"){
+
+showPage('videoPage');
+
+const vid =
+document.getElementById('mainVideo');
+
+vid.play();
+
+}else{
+
+document.getElementById('wrong')
+.innerHTML =
+"Wrong Password 😭";
+
+}
+
+}
+
+/* VIDEO END */
+
+const vid =
+document.getElementById('mainVideo');
+
+vid.onended = ()=>{
+
+showPage('finalPage');
+
+};
+
+/* FLOATING LIGHTS */
+
+function createLights(){
+
+setInterval(()=>{
+
+const light =
+document.createElement('div');
+
+light.classList.add('light');
+
+light.style.left =
+Math.random()*100+'vw';
+
+light.style.animationDuration =
+(Math.random()*8+5)+'s';
+
+document.body.appendChild(light);
+
+setTimeout(()=>{
+light.remove();
+},13000);
+
+},400);
+
+}
+
+createLights();
+
+</script>
+
+</body>
+</html>.final-text{
 font-size:3rem;
 font-family:'Cinzel',serif;
 line-height:1.5;
